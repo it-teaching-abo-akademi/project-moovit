@@ -3,7 +3,7 @@ import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { default as logo } from "../../assets/muuvitLogo.svg";
 import "../../styles/FormBase.css";
-import {USERSSERVICE} from "../../constants";
+import { USERSSERVICE } from "../../constants";
 
 const PASSWORD_MAX_LENGTH = 20;
 const PASSWORD_MIN_LENGTH = 5;
@@ -72,6 +72,8 @@ export default function Signup() {
         const fetchURL = USERSSERVICE + "/register";
         const response = await fetch(fetchURL, requestOptions);
 
+        console.log(response);
+
         // Handle response.
         if (response.status === 400) {
             if ((await response.json()).message) setUsernameExists(true);
@@ -116,6 +118,8 @@ export default function Signup() {
                                         className="rounded mx-auto d-block"
                                         alt="muuvitLogo"
                                     />
+                                    <h3>Sign up</h3>
+
                                     <br />
                                     <div className="mb-3">
                                         <Form onSubmit={handleRegistration}>

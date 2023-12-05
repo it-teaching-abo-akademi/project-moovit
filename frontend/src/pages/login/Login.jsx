@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { default as logo } from "../../assets/muuvitLogo.svg";
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import Cookies from "js-cookie";
+import { USERSSERVICE } from "../../constants";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -11,8 +12,7 @@ export default function Login() {
     const [validated, setValidated] = useState(false);
 
     const validateEmail = (email) => {
-        const re =
-            /^(([^<>()[]\.,;:\s@"]+(.[^<>()[]\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
+        const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
         return re.test(String(email).toLowerCase());
     };
 
@@ -27,13 +27,21 @@ export default function Login() {
 
         if (validateEmail(email) && validatePassword(password)) {
             try {
-                const response = await fetch("YOUR_SERVER_ENDPOINT/api/login", {
+                /* const response = await fetch("YOUR_SERVER_ENDPOINT/api/login", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({ email, password }),
-                });
+                }); */
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email: email, password: password }),
+                };
+                const fetchURL = USERSSERVICE + "/register";
+                const response = await fetch(fetchURL, requestOptions);
 
                 const data = await response.json();
 
