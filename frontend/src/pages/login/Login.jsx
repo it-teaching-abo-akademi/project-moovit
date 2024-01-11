@@ -133,13 +133,13 @@ export default function Login() {
                                                     value={password}
                                                     onChange={(e) =>
                                                         setPassword(
-                                                            e.target.value
+                                                            e.target.value,
                                                         )
                                                     }
                                                     isInvalid={
                                                         validated &&
                                                         !validatePassword(
-                                                            password
+                                                            password,
                                                         )
                                                     }
                                                 />

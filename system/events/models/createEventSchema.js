@@ -44,9 +44,9 @@ const createSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    image: {
+    imageURL: {
         type: String,
-        required: false
+        required: true
     },
     blurhash: {
         type: String,

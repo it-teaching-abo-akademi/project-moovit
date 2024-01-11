@@ -133,7 +133,7 @@ export default function Signup() {
                                                     value={username}
                                                     onChange={(e) =>
                                                         setUsername(
-                                                            e.target.value
+                                                            e.target.value,
                                                         )
                                                     }
                                                 />
@@ -177,7 +177,7 @@ export default function Signup() {
                                                     value={password}
                                                     onChange={(e) =>
                                                         setPassword(
-                                                            e.target.value
+                                                            e.target.value,
                                                         )
                                                     }
                                                 />
@@ -206,7 +206,7 @@ export default function Signup() {
                                                     value={passwordReType}
                                                     onChange={(e) =>
                                                         setPasswordReType(
-                                                            e.target.value
+                                                            e.target.value,
                                                         )
                                                     }
                                                 />
