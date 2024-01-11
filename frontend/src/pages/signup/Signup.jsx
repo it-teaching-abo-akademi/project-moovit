@@ -3,7 +3,7 @@ import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { default as logo } from "../../assets/muuvitLogo.svg";
 import "../../styles/FormBase.css";
-import {USERSSERVICE} from "../../constants";
+import { USERSSERVICE } from "../../constants";
 
 const PASSWORD_MAX_LENGTH = 20;
 const PASSWORD_MIN_LENGTH = 5;
