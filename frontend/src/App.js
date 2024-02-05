@@ -8,6 +8,7 @@ import About from "./pages/infoPages/about";
 import Tac from "./pages/infoPages/tac.jsx";
 import Privacypolicy from "./pages/infoPages/privacypolicy";
 import CreateEventPage from "./pages/events/Create";
+import EventDetailPage from "./pages/singleEvent/EventDetail.jsx";
 
 function App() {
     return (
@@ -21,6 +22,10 @@ function App() {
                 <Route
                     path="/events/create"
                     element={<CreateEventPage />}
+                ></Route>
+                <Route
+                    path="/events/detail/:id"
+                    element={<EventDetailPage />}
                 ></Route>
             </Routes>
         </BrowserRouter>
