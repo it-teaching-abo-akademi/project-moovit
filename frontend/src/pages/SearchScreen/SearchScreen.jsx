@@ -29,10 +29,12 @@ const SearchScreen = () => {
         date: "",
         time: "",
         tags: [],
+        eventName: ""
     });
 
     const handleSearchSubmit = async (e) => {
         e.preventDefault();
+        filters.eventName = searchTerm;
         try {
             const response = await fetch(EVENTSSERVICE + "/getFiltedEvnets", {
                 method: "POST",

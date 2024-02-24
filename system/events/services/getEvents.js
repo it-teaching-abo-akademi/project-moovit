@@ -6,15 +6,14 @@ const mongoose = require("mongoose");
 async function getEvents() {}
 
 // Get single.
-async function getSingleEvent(id){
-
-  try{
-      const event = await Event.findOne({_id: id});
-      console.log(event);
-      return(new Status(201, SUCCESS, event));
-  }catch(e){
-      console.error(e)
-      return(new Status(500, SUCCESS, {}));
+async function getSingleEvent(id) {
+  try {
+    const event = await Event.findOne({ _id: id });
+    console.log(event);
+    return new Status(201, SUCCESS, event);
+  } catch (e) {
+    console.error(e);
+    return new Status(500, SUCCESS, {});
   }
 }
 
@@ -36,17 +35,36 @@ async function getRandomEvents(eventQuantity) {
 }
 
 async function getFiltedEvents(filters) {
+  console.log(filters);
   // Construct the filter object based on the provided filters
   let filter = {};
 
-  // If city is provided, filter by city
+  // If eventName is provided, filter by eventName
+  if (filters.eventName) {
+    filter["eventName"] = { $regex: filters.eventName, $options: "i" }; // Case-insensitive search for eventName
+  }
+
+  // // If city is provided, filter by city
+  // if (filters.city) {
+  //   filter["location.coordinates"] = {
+  //     $near: {
+  //       $geometry: {
+  //         type: "Point",
+  //         coordinates: filters.city.split(",").map(parseFloat), // Converts "24.9384,60.1699" to [24.9384, 60.1699]
+  //       },
+  //     },
+  //   };
+  // }
+  // If city is provided, filter by city within 50km range
   if (filters.city) {
+    const [longitude, latitude] = filters.city.split(",").map(parseFloat);
     filter["location.coordinates"] = {
       $near: {
         $geometry: {
           type: "Point",
-          coordinates: filters.city.split(",").map(parseFloat), // Converts "24.9384,60.1699" to [24.9384, 60.1699]
+          coordinates: [longitude, latitude],
         },
+        $maxDistance: 50000, // 50km in meters
       },
     };
   }
@@ -81,8 +99,12 @@ async function getFiltedEvents(filters) {
   // Execute the query using the constructed filter
   const events = await Event.find(filter);
 
-  return (new Status(200, SUCCESS, events));
+  return new Status(200, SUCCESS, events);
 }
 
-module.exports = {getEvents, getRandomEvents, getFiltedEvents, getSingleEvent};
-
+module.exports = {
+  getEvents,
+  getRandomEvents,
+  getFiltedEvents,
+  getSingleEvent,
+};

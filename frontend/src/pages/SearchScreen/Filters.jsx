@@ -13,8 +13,8 @@ const Filters = ({ onFiltersChange }) => {
     const [categoriesData, setCategoriesData] = useState([]); // State to store fetched categories
     const [tagsData, setTagsData] = useState([]); // State to store fetched tags
     const [date, setDate] = useState("");
-    const [fromTime, setFromTime] = useState("08:00");
-    const [toTime, setToTime] = useState("12:00");
+    const [fromTime, setFromTime] = useState(null);
+    const [toTime, setToTime] = useState(null);
     const [selectedTags, setSelectedTags] = useState([]); // State to store selected tags
     const [loading, setLoading] = useState(true); // State to track loading state
 
@@ -93,10 +93,13 @@ const Filters = ({ onFiltersChange }) => {
                     <Select
                         value={selectedCity}
                         onChange={handleCityChange}
-                        options={citiesData.map((cityData) => ({
-                            value: cityData.location,
-                            label: cityData.city,
-                        }))}
+                        options={[
+                            { value: '', label: 'Select' }, 
+                            ...citiesData.map((cityData) => ({
+                                value: cityData.location,
+                                label: cityData.city,
+                            }))
+                        ]}
                         placeholder="Select City"
                         isSearchable
                     />
