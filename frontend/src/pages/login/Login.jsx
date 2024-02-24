@@ -66,7 +66,7 @@ export default function Login() {
             <Container>
                 <Card>
                     <Card.Body>
-                        <div className="mb-3 mt-md-4">
+                        <div className="mb-3 mt-md-4 form-width-control">
                             <div>
                                 <BackButton navigateTo="/" /> <br />
                             </div>
@@ -142,7 +142,14 @@ export default function Login() {
                                     ></Form.Group>
 
                                     <div className="d-grid">
-                                        <Button variant="primary" type="submit">
+                                        <Button
+                                            style={{
+                                                backgroundColor: "#30306d",
+                                                border: "none",
+                                            }}
+                                            variant="primary"
+                                            type="submit"
+                                        >
                                             Sign in
                                         </Button>
                                     </div>

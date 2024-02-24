@@ -17,3 +17,17 @@
         width: 65%;
     }
 }
+
+.form-width-control {
+    max-width: 400px; /* Adjust this value based on your preference */
+    margin: auto; /* This centers the div */
+}
+
+/* Optional: Additional styling to ensure consistency across devices */
+@media (min-width: 768px) {
+    /* Adjust breakpoint as needed */
+    .form-width-control {
+        max-width: 400px;
+        margin: auto;
+    }
+}
