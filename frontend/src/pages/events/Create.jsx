@@ -4,6 +4,9 @@ import createBlurhash from "./createBlurhash";
 import Select from "react-select";
 import InputField from "./InputField";
 import "./event.css";
+import { Link } from "react-router-dom";
+import { Container, Button } from "react-bootstrap";
+import { default as logo } from "../../assets/muuvitLogo.svg";
 
 const validateField = (data) => {
     const invalidFields = {};
@@ -50,9 +53,9 @@ const createEvent = async (e, data) => {
     // Setup form data
     const formData = new FormData();
     Object.entries(data).forEach(([key, value]) => {
-        if (key === 'categories' || key === 'tags') {
+        if (key === "categories" || key === "tags") {
             // Convert the array of objects to an array of string IDs
-            const ids = value.map(item => item.value);
+            const ids = value.map((item) => item.value);
             // Append the array of IDs as a string
             formData.append(key, JSON.stringify(ids));
         } else {
@@ -86,7 +89,6 @@ const createEvent = async (e, data) => {
     }
 
     submitButton.disabled = false;
-    
 };
 
 const CreateEventPage = () => {
@@ -156,126 +158,197 @@ const CreateEventPage = () => {
     };
 
     return (
-        <div>
-            <h2>Create Event</h2>
-            <form
-                onSubmit={(e) => createEvent(e, eventData)}
-                encType="multipart/form-data"
-            >
-                <InputField
-                    type="text"
-                    label="Event name"
-                    onValueChange={(value) =>
-                        updateEventData("eventName", value)
-                    }
-                />
-                <div>
-                    <label>Description:</label>
-                    <textarea
-                        type="text"
-                        value={setEventData.description}
-                        onChange={(e) =>
-                            updateEventData("description", e.target.value)
-                        }
-                    />
-                </div>
-
-                <InputField
-                    type="text"
-                    label="Host name"
-                    onValueChange={(value) => updateEventData("host", value)}
-                />
-                <InputField
-                    type="date"
-                    label="Date"
-                    onValueChange={(value) => updateEventData("date", value)}
-                />
-                <InputField
-                    type="text"
-                    label="Time"
-                    onValueChange={(value) => updateEventData("time", value)}
-                />
-                <InputField
-                    type="number"
-                    label="Duration"
-                    onValueChange={(value) =>
-                        updateEventData("duration", value)
-                    }
-                />
-                <div>
-                    <label>Event banner:</label>
-                    <input
-                        type="file"
-                        onChange={(e) =>
-                            updateEventData("file", e.target.files[0])
-                        }
-                    />
+        <div
+            style={{
+                padding: "30px 20px 10px 10px",
+                background:
+                    "linear-gradient(120deg, rgba(255,205,210,1) 0%, rgba(242,72,85,1) 100%)",
+            }}
+        >
+            <Container>
+                <div
+                    className="logoAndSignIn"
+                    style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                    }}
+                >
                     <img
-                        style={{ display: "block", width: "200px" }}
-                        src={URL.createObjectURL(
-                            new Blob([eventData.file], {
-                                type: eventData.file?.type,
-                            }),
-                        )}
-                        alt="Uploaded File"
+                        src={logo}
+                        width={100}
+                        height={100}
+                        className=""
+                        alt="muuvitLogo"
                     />
+                    <Link to="/">
+                        <Button
+                            variant="primary"
+                            style={{
+                                color: "white",
+                                backgroundColor: "#30306d",
+                                borderRadius: "10px",
+                                marginTop: "5px",
+                                marginBottom: "5px",
+                                marginLeft: "5px",
+                                marginRight: "5px",
+                                width: "100px",
+                                border: "none",
+                            }}
+                        >
+                            Home
+                        </Button>
+                    </Link>
                 </div>
-                <InputField
-                    type="text"
-                    label="Location"
-                    onValueChange={(value) =>
-                        updateEventData("location", value)
-                    }
-                />
-                <InputField
-                    type="text"
-                    label="Max participants"
-                    onValueChange={(value) =>
-                        updateEventData("maxParticipants", value)
-                    }
-                />
+                <br />
+                <h2>Create Event</h2>
+                <br />
+                <form
+                    onSubmit={(e) => createEvent(e, eventData)}
+                    encType="multipart/form-data"
+                >
+                    <div className="form-section">
+                        <InputField
+                            type="text"
+                            label="Event name"
+                            onValueChange={(value) =>
+                                updateEventData("eventName", value)
+                            }
+                        />
+                    </div>
 
-                <div>
-                    <label>Categories:</label>
-                    <Select
-                        isMulti
-                        options={categoriesData.map((category) => ({
-                            value: category._id,
-                            label: category.categoryName,
-                        }))}
-                        getOptionLabel={(option) => option.label}
-                        getOptionValue={(option) => option.value}
-                        value={eventData.categories}
-                        onChange={(selectedOptions) =>
-                            handleMultiselectChange(
-                                "categories",
-                                selectedOptions,
-                            )
-                        }
-                    />
-                </div>
+                    <div className="form-section">
+                        <label>Description:</label>
+                        <textarea
+                            style={{
+                                borderRadius: "5px",
+                                border: "1px solid #cccccc",
+                            }}
+                            type="text"
+                            value={setEventData.description}
+                            onChange={(e) =>
+                                updateEventData("description", e.target.value)
+                            }
+                        />
+                    </div>
 
-                <div>
-                    <label>Tags:</label>
-                    <Select
-                        isMulti
-                        options={tagsData.map((tag) => ({
-                            value: tag._id,
-                            label: tag.tagName,
-                        }))}
-                        getOptionLabel={(option) => option.label}
-                        getOptionValue={(option) => option.value}
-                        value={eventData.tags}
-                        onChange={(selectedOptions) =>
-                            handleMultiselectChange("tags", selectedOptions)
-                        }
-                    />
-                </div>
+                    <div className="form-section">
+                        <InputField
+                            type="text"
+                            label="Host name"
+                            onValueChange={(value) =>
+                                updateEventData("host", value)
+                            }
+                        />
+                    </div>
+                    <div className="form-section">
+                        <InputField
+                            type="date"
+                            label="Date"
+                            onValueChange={(value) =>
+                                updateEventData("date", value)
+                            }
+                        />
+                    </div>
 
-                <button type="submit" id="submit-button">
-                    Create Event
-                </button>
-            </form>
+                    <div className="form-section">
+                        <InputField
+                            type="text"
+                            label="Time"
+                            onValueChange={(value) =>
+                                updateEventData("time", value)
+                            }
+                        />
+                    </div>
+                    <div className="form-section">
+                        <InputField
+                            type="number"
+                            label="Duration"
+                            onValueChange={(value) =>
+                                updateEventData("duration", value)
+                            }
+                        />
+                    </div>
+                    <div className="form-section">
+                        <label>Event banner:</label>
+                        <input
+                            type="file"
+                            onChange={(e) =>
+                                updateEventData("file", e.target.files[0])
+                            }
+                        />
+                        <img
+                            style={{ display: "block", width: "200px" }}
+                            src={URL.createObjectURL(
+                                new Blob([eventData.file], {
+                                    type: eventData.file?.type,
+                                }),
+                            )}
+                            alt="Uploaded File"
+                        />
+                    </div>
+                    <div className="form-section">
+                        <InputField
+                            type="text"
+                            label="Location"
+                            onValueChange={(value) =>
+                                updateEventData("location", value)
+                            }
+                        />
+                    </div>
+
+                    <div className="form-section">
+                        <InputField
+                            type="text"
+                            label="Max participants"
+                            onValueChange={(value) =>
+                                updateEventData("maxParticipants", value)
+                            }
+                        />
+                    </div>
+
+                    <div className="form-section">
+                        <label>Categories:</label>
+                        <Select
+                            isMulti
+                            options={categoriesData.map((category) => ({
+                                value: category._id,
+                                label: category.categoryName,
+                            }))}
+                            getOptionLabel={(option) => option.label}
+                            getOptionValue={(option) => option.value}
+                            value={eventData.categories}
+                            onChange={(selectedOptions) =>
+                                handleMultiselectChange(
+                                    "categories",
+                                    selectedOptions,
+                                )
+                            }
+                        />
+                    </div>
+
+                    <div className="form-section">
+                        <label>Tags:</label>
+                        <Select
+                            isMulti
+                            options={tagsData.map((tag) => ({
+                                value: tag._id,
+                                label: tag.tagName,
+                            }))}
+                            getOptionLabel={(option) => option.label}
+                            getOptionValue={(option) => option.value}
+                            value={eventData.tags}
+                            onChange={(selectedOptions) =>
+                                handleMultiselectChange("tags", selectedOptions)
+                            }
+                        />
+                    </div>
+
+                    <button type="submit" id="submit-button">
+                        Create Event
+                    </button>
+                </form>
+            </Container>
         </div>
     );
 };

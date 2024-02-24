@@ -12,7 +12,12 @@ const InputField = ({ type, label, onValueChange }) => {
     return (
         <div>
             <label>{label}:</label>
-            <input type={type} value={value} onChange={handleChange} />
+            <input
+                style={{ borderRadius: "5px", border: "none" }}
+                type={type}
+                value={value}
+                onChange={handleChange}
+            />
         </div>
     );
 };

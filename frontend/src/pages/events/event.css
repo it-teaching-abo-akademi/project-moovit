@@ -1,0 +1,33 @@
+.form-section {
+    margin-bottom: 10px; /* Adds space between form sections */
+}
+
+.form-section label {
+    display: block;
+    margin-bottom: 5px; /* Adds space below the label */
+}
+
+.input-field,
+.form-section textarea,
+.form-section select,
+.form-section input[type="file"] {
+    width: 100%; /* Ensures consistent width */
+    padding: 5px; /* Adds some padding inside the input fields */
+    margin-bottom: 5px; /* Adds space below each input field */
+}
+
+.input-field img {
+    margin-top: 10px; /* Adds space above the image */
+}
+
+#submit-button {
+    display: block; /* Makes the button a block element */
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px; /* Adds space above the submit button */
+    cursor: pointer;
+    border-radius: 20px;
+    border: none;
+    background-color: #30306d;
+    color: #ffffff;
+}
