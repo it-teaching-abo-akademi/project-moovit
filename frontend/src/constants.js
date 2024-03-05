@@ -1,4 +1,7 @@
-export const USERSSERVICE = "http://ec2-54-234-34-189.compute-1.amazonaws.com:8080/api/users";
-export const EVENTSSERVICE = "http://ec2-54-234-34-189.compute-1.amazonaws.com:8080/api/events";
-export const CATEGORIESSERVICE = "http://ec2-54-234-34-189.compute-1.amazonaws.com:8080/api/categories";
-export const TAGSSERVICE = "http://ec2-54-234-34-189.compute-1.amazonaws.com:8080/api/tags";
+const baseURL = "ec2-34-236-145-67.compute-1.amazonaws.com"
+const port = "8080"
+
+export const USERSSERVICE =      baseURL+":"+port+"/api/users";
+export const EVENTSSERVICE =     baseURL+":"+port+"/api/events";
+export const CATEGORIESSERVICE = baseURL+":"+port+"/api/categories";
+export const TAGSSERVICE =       baseURL+":"+port+"/api/tags";
