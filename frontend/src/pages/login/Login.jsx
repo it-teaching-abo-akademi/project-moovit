@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../styles/FormBase.css";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { default as logo } from "../../assets/muuvitLogo.svg";
 import { Button, Container, Card, Form } from "react-bootstrap";
 import Cookies from "js-cookie";

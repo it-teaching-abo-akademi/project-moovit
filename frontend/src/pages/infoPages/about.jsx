@@ -1,9 +1,9 @@
 import React from "react";
-import { Col, Row, Container, Card } from "react-bootstrap";
+import { Container, Card } from "react-bootstrap";
 import InfoCustomizableTextComponent from "./infoComponent";
 import BackButton from "../components/BackButton";
 
-export default function about() {
+export default function About() {
     return (
         <div
             style={{

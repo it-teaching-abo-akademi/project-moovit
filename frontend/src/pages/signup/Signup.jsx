@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Container, Card, Form } from "react-bootstrap";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { default as logo } from "../../assets/muuvitLogo.svg";
 import "../../styles/FormBase.css";
 import { USERSSERVICE } from "../../constants";
@@ -15,10 +15,9 @@ const PASSWORD_MISMATCH_MSG = "Passwords do not match.";
 const USERNAME_EXISTS_MSG = "The username is already taken.";
 const USERNAME_TOO_LONG_MSG = "Username is too long";
 const USERNAME_TOO_SHORT_MSG = "Username is too short";
-const EMAIL_INVALID = "E-mail address is not valid"
+const EMAIL_INVALID = "E-mail address is not valid";
 
 export default function Signup() {
-
     const navigateTo = useNavigate();
     // Fredi's register code before return ()
 
@@ -74,7 +73,7 @@ export default function Signup() {
 
         // Terminate if any errors.
         if (errorsInFields) {
-            console.log("errors in fields")
+            console.log("errors in fields");
             return;
         }
         // Send the registration request
@@ -91,7 +90,7 @@ export default function Signup() {
             if ((await response.json()).message) setUsernameExists(true);
         }
         if (response.status === 201) {
-            navigateTo("/login")
+            navigateTo("/login");
             console.log("success");
         } else {
             console.log("error code: " + response.status);
@@ -133,11 +132,11 @@ export default function Signup() {
                                         controlId="Name"
                                     >
                                         <Form.Label className="text-center">
-                                            Name
+                                            User Name
                                         </Form.Label>
                                         <Form.Control
                                             type="text"
-                                            placeholder="Enter Name"
+                                            placeholder="Enter User Name"
                                             value={username}
                                             onChange={(e) =>
                                                 setUsername(e.target.value)
@@ -161,20 +160,16 @@ export default function Signup() {
                                         controlId="formBasicEmail"
                                     >
                                         <Form.Label className="text-center">
-                                            Email address
+                                            Email Address
                                         </Form.Label>
                                         <Form.Control
                                             type="email"
-                                            placeholder="Enter email"
+                                            placeholder="Enter Email Address"
                                             onChange={(e) =>
                                                 setEmail(e.target.value)
                                             }
                                         />
-                                        <p>
-                                            {emailValid
-                                                ? EMAIL_INVALID
-                                                : ""}
-                                        </p>
+                                        <p>{emailValid ? EMAIL_INVALID : ""}</p>
                                     </Form.Group>
 
                                     {/* Password logic begin */}

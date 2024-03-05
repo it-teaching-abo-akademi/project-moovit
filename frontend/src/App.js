@@ -12,10 +12,12 @@ import HomeScreen from "./pages/HomeScreen/HomeScreen.js";
 import SearchScreen from "./pages/SearchScreen/SearchScreen";
 import SingleEvent from "./pages/events/Single.jsx";
 import MenuBar from "./pages/components/MenuBar.jsx";
+import ScrollToTop from "./pages/components/ScrollToTop.jsx";
 
 function App() {
     return (
         <BrowserRouter>
+            <ScrollToTop />
             <Routes>
                 <Route path="/" element={<HomeScreen />}></Route>
                 <Route path="/events/search" element={<SearchScreen />}></Route>
@@ -30,10 +32,9 @@ function App() {
                 <Route path="/tac" element={<Tac />}></Route>
                 <Route path="/pp" element={<Privacypolicy />}></Route>
             </Routes>
-        <div style={{"display":"block", "height": "60px"}}></div>
-        <MenuBar/>
+            <div style={{ display: "block", height: "60px" }}></div>
+            <MenuBar />
         </BrowserRouter>
-
     );
 }
 
