@@ -124,7 +124,6 @@ async function joinEvent(data) {
   const userEnrolled = event.enrollUser(data.userId);
   if (userEnrolled) {
     // Save the updated event
-    console.log("Save the updated event");
     await event.save();
     return new Status(201, SUCCESS, "Joined the event successfully!!");
   } else {

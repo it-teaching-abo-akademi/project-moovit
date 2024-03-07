@@ -1,5 +1,5 @@
 
-POST http://localhost:8080/users/register HTTP/1.1
+POST http://localhost:8080/api/users/register HTTP/1.1
 content-type: application/json
 
 {
@@ -8,13 +8,13 @@ content-type: application/json
 }
 ###
 
-GET http://localhost:8080/events/getRandomEvents/5 HTTP/1.1
+GET http://localhost:8080/api/events/getRandomEvents/5 HTTP/1.1
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoiNjUzZDg2OTNlMjU0ZTk5MWE0OTdlYTg2IiwiaWF0IjoxNjk5NTMxNzAxfQ.8kC3sw3tRefxoNsHrJCPTnR7pk9-pfc4wba_wPNz1vU
 
 ###
 
-POST http://localhost:8080/users/login HTTP/1.1
+POST http://localhost:8080/api/users/login HTTP/1.1
 content-type: application/json
 
 {
@@ -22,7 +22,7 @@ content-type: application/json
     "password": "test!"
 }
 ###
-POST http://localhost:8080/events/create HTTP/1.1
+POST http://localhost:8080/api/events/create HTTP/1.1
 content-type: application/json
 
 {
@@ -35,13 +35,13 @@ content-type: application/json
     "image": ""
 }
 ###
-POST http://localhost:8080/users/verify HTTP/1.1
+POST http://localhost:8080/api/users/verify HTTP/1.1
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoiNjUzZDg2OTNlMjU0ZTk5MWE0OTdlYTg2IiwiaWF0IjoxNjk5NTMxNzAxfQ.8kC3sw3tRefxoNsHrJCPTnR7pk9-pfc4wba_wPNz1vU
 
 
 ###
-POST http://localhost:8080/types/create HTTP/1.1
+POST http://localhost:8080/api/types/create HTTP/1.1
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoiNjUzZDg2OTNlMjU0ZTk5MWE0OTdlYTg2IiwiaWF0IjoxNjk5NTMxNzAxfQ.8kC3sw3tRefxoNsHrJCPTnR7pk9-pfc4wba_wPNz1vU
 
@@ -49,7 +49,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoiNjUzZ
     "typeName": "water"
 }
 ###
-PUT http://localhost:8080/types/update HTTP/1.1
+PUT http://localhost:8080/api/types/update HTTP/1.1
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoiNjUzZDg2OTNlMjU0ZTk5MWE0OTdlYTg2IiwiaWF0IjoxNjk5NTMxNzAxfQ.8kC3sw3tRefxoNsHrJCPTnR7pk9-pfc4wba_wPNz1vU
 
@@ -58,7 +58,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoiNjUzZ
     "newName": "football"
 }
 ###
-POST http://localhost:8080/events/create HTTP/1.1
+POST http://localhost:8080/api/events/create HTTP/1.1
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoiNjUzZDg2OTNlMjU0ZTk5MWE0OTdlYTg2IiwiaWF0IjoxNjk5NTMxNzAxfQ.8kC3sw3tRefxoNsHrJCPTnR7pk9-pfc4wba_wPNz1vU
 
@@ -81,7 +81,7 @@ content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoiNjUzZDg2OTNlMjU0ZTk5MWE0OTdlYTg2IiwiaWF0IjoxNjk5NTMxNzAxfQ.8kC3sw3tRefxoNsHrJCPTnR7pk9-pfc4wba_wPNz1vU
 
 {
-    "tagName": "Solo"
+    "tagName": "Strenght"
 }
 ###
 POST http://localhost:8080/api/categories/create HTTP/1.1
@@ -89,5 +89,5 @@ content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoiNjUzZDg2OTNlMjU0ZTk5MWE0OTdlYTg2IiwiaWF0IjoxNjk5NTMxNzAxfQ.8kC3sw3tRefxoNsHrJCPTnR7pk9-pfc4wba_wPNz1vU
 
 {
-    "categoryName": "Solo"
+    "categoryName": "Baseball"
 }

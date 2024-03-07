@@ -55,4 +55,14 @@ router.put(
   })
 );
 
+router.get(
+  "/getUser/:userId",
+  //authorize,
+  asyncErrorHandler(async (req, res, next) => {
+    let userId = req.params?.userId;
+    const statusObject = await userControlller.getUserInfo(userId);
+    res.status(statusObject.httpStatus).send(statusObject.message);
+  })
+);
+
 module.exports = router;

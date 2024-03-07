@@ -15,11 +15,10 @@ async function login(email, password){
 
 async function logout(res){
     return await logoutLogic.logoutUser(res);
- 
 }
 
-function getUserInfo(username, password){
-
+async function getUserInfo(userId){
+    return await userInfoLogic.getUserById(userId);
 }
 
 async function editUserInfo(userData){

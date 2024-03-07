@@ -98,6 +98,7 @@ router.post(
 );
 
 //enrol for event 
+//todo: add authorize
 router.post(
   "/joinEvent",
   asyncErrorHandler(async (req, res, next) => {
@@ -108,6 +109,7 @@ router.post(
 );
 
 //enrol for event 
+//todo: authorize
 router.post(
   "/disjoinEvent",
   asyncErrorHandler(async (req, res, next) => {
